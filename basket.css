@@ -15,7 +15,7 @@ body{
 
 #purchasse{
 display: flex;
-flex-direction:column-reverse;
+flex-direction:column;
 width: 60%;
 height: 40%;   
 background-color: whitesmoke;
@@ -35,11 +35,14 @@ overflow: hidden;
     background-color: rgb(18, 22, 98);
 }
 
-
-#buttonPurchase{
+button{
     border: none;
     background-color: rgb(92, 176, 133);
     color: whitesmoke;
+}
+
+#buttonPurchase{
+
     width: 100px;
     height:40px;
     border-radius: 5px;
