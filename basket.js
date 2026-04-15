@@ -86,15 +86,34 @@ async function addBasketTrip() {
         tripsDiv.style.height = '70%'
         tripsDiv.style.padding = '10px'
 
+        const tripsId = []
 
         for (const response of jsonResponse) {
             const trip = response.trip
+            tripsId.push(trip['_id'])
             createTripDiv(trip, tripsDiv)
         }
 
         purchaseDiv.appendChild(tripsDiv)
 
         purchaseDiv.appendChild(createDivTotal())
+
+       const purchaseButton = document.getElementById('buttonPurchase')
+       purchaseButton.addEventListener('click',async function(){
+            await fetch('http://localhost:3000/book', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ tickets: tripsId})
+            }) 
+
+            await fetch('http://localhost:3000/baskets/delete/trips', {
+                method: 'DELETE'
+            }) 
+
+            window.location('book.html')
+       })
     }
 }
 
@@ -125,6 +144,7 @@ function createDivTotal(){
         textSshadow: '1px 1px 2px black',  
       });
       divTotal.prepend(spanTotal)
+
 
       const purchaseButton = document.createElement('button')
       purchaseButton.id = 'buttonPurchase'
