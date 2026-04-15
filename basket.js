@@ -39,7 +39,8 @@ function createTripDiv(trip, divParent) {
         tripDiv.remove()
         if(!document.getElementsByClassName('trips').length){
             
-        purchaseDiv.appendChild(createDefaultTextDiv())          
+        purchaseDiv.appendChild(createDefaultTextDiv()) 
+        document.getElementById('cartTitle').remove()         
         document.getElementById('total').remove()
         document.getElementById('trips').remove()
 
@@ -84,7 +85,7 @@ async function addBasketTrip() {
         tripsDiv.style.flexDirection = 'column'
         tripsDiv.style.justifyContent = 'center'
         tripsDiv.style.gap = '10px'
-        tripsDiv.style.height = '70%'
+        tripsDiv.style.height = '100%'
         tripsDiv.style.padding = '10px'
 
         const tripsId = []
@@ -94,6 +95,14 @@ async function addBasketTrip() {
             tripsId.push(trip['_id'])
             createTripDiv(trip, tripsDiv)
         }
+
+        const myCartH3 = document.createElement('h4')
+        myCartH3.id = 'cartTitle'
+        myCartH3.style.height = '10%'
+        myCartH3.style.fontWeight = '900'
+        myCartH3.textContent = "My Cart"
+
+        purchaseDiv.append(myCartH3)
 
         purchaseDiv.appendChild(tripsDiv)
 
