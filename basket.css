@@ -15,9 +15,11 @@ body{
 
 #purchasse{
 display: flex;
-flex-direction:column-reverse;
+flex-direction:column;
+justify-content: center;
+text-align: center;
 width: 60%;
-height: 40%;   
+height: 40%;
 background-color: whitesmoke;
 border-radius: 5px;
 box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
@@ -35,14 +37,18 @@ overflow: hidden;
     background-color: rgb(18, 22, 98);
 }
 
-
-#buttonPurchase{
+button{
     border: none;
     background-color: rgb(92, 176, 133);
     color: whitesmoke;
+    border-radius: 5px;
+}
+
+#buttonPurchase{
+
     width: 100px;
     height:40px;
-    border-radius: 5px;
+
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.94);
 
 }
