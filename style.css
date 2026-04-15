@@ -1,0 +1,164 @@
+header {
+  padding: 10px 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+#header {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #ffffff;
+}
+.nav {
+  display: flex;
+  gap: 20px;
+  padding-right: 20px;
+}
+body {
+  margin: 0;
+}
+h3 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-weight: normal;
+}
+
+h1 {
+  color: rgb(80, 167, 146);
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 20px;
+}
+h2 {
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#background {
+  height: calc(100vh - 80px);
+  background: url('images/background.jpg') center/cover no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.content {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: flex;
+  gap: 80px;
+}
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.card {
+  width: 250px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+hr {
+  border: none;
+  height: 2px;
+  background-color: #5fae9e;
+  width: 60%;
+  margin: 20px auto;
+}
+
+.card button {
+  padding: 10px;
+  background-color: #00b894;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #019874;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+}
+
+.avatar {
+  width: 80px;
+}
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 12px;
+  border: none;
+  background: #eee;
+  font-size: 14px;
+}
+
+.top {
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #e6e4e4;
+}
+
+.middle {
+  border-radius: 0 0 8px 8px;
+}
+
+.date-wrapper {
+  position: relative;
+  margin-top: 20px;
+  border-bottom: 1px solid #e6e4e4;
+
+}
+
+.date-wrapper input {
+  width: 95%;
+  padding-right: 0px;
+}
+
+.icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+}
+.btn-search {
+  margin-top: 30px;
+  padding: 12px;
+  background-color: #5fae9e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
