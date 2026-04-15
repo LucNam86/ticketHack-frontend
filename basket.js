@@ -18,7 +18,7 @@ function createTripDiv(trip, divParent) {
     tripDiv.style.gap = '5%'
     tripDiv.style.width = '100%'
     tripDiv.style.textAlign = 'center'
-    tripDiv.style.height = '20%'
+    tripDiv.style.height = '30%'
     tripDiv.style.borderRadius = '5px'
     tripDiv.style.boxShadow = '1px 1px 1px 1px rgb(0 0 0 / 20%)'
 
@@ -37,8 +37,13 @@ function createTripDiv(trip, divParent) {
         })
 
         tripDiv.remove()
-        
-        !document.getElementsByClassName('trips').length && createTemplateNoTrip()
+        if(!document.getElementsByClassName('trips').length){
+            
+        purchaseDiv.appendChild(createDefaultTextDiv())          
+        document.getElementById('total').remove()
+        document.getElementById('trips').remove()
+
+        }
     }
 
     createDeleteButton(tripDiv, handleEvent)
@@ -66,37 +71,87 @@ async function addBasketTrip() {
     const response = await fetch('http://localhost:3000/baskets')
     const jsonResponse = await response.json()
 
-    const tripsDiv = document.getElementById('trips')
-    tripsDiv.style.display = 'flex'
-    tripsDiv.style.flexDirection = 'column'
-    tripsDiv.style.justifyContent = 'center'
-    tripsDiv.style.gap = '10px'
-    tripsDiv.style.height = '70%'
-    tripsDiv.style.padding = '10px'
+    purchaseDiv.appendChild(createDefaultTextDiv())
 
-    !jsonResponse.length && createTemplateNoTrip()
+    if(jsonResponse.length){
 
-    for (const response of jsonResponse) {
-        const trip = response.trip
-        createTripDiv(trip, tripsDiv)
+       const defaultDiv = document.getElementById('default-text')
+       defaultDiv.remove()
+
+        const tripsDiv = document.createElement('trips')
+        tripsDiv.style.display = 'flex'
+        tripsDiv.style.flexDirection = 'column'
+        tripsDiv.style.justifyContent = 'center'
+        tripsDiv.style.gap = '10px'
+        tripsDiv.style.height = '70%'
+        tripsDiv.style.padding = '10px'
+
+
+        for (const response of jsonResponse) {
+            const trip = response.trip
+            createTripDiv(trip, tripsDiv)
+        }
+
+        purchaseDiv.appendChild(tripsDiv)
+
+        purchaseDiv.appendChild(createDivTotal())
     }
 }
 
-function createTemplateNoTrip(){
-    const noTripSpanCart = document.createElement('span')
-    noTripSpanCart.textContent = 'No Ticket in your cart'
+function createDivTrips(){
+    const divTrips = document.createElement('div')
+    divTrips.classList.add('trips')
+    return divTrips
+}
 
-    const noTripSpanPlan = document.createElement('span')
-    noTripSpanPlan.textContent = 'Why not plan a trip'
+function createDivTotal(){
+    const divTotal = document.createElement('div')
+    divTotal.id = 'total'
+    Object.assign(divTotal.style, {
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        gap: '50%',
+        width: 'auto',
+        height: '30%',
+        backgroundColor: 'rgb(18, 22, 98)',
+      });
 
-    purchaseDiv.appendChild(noTripSpanCart)
-    purchaseDiv.appendChild(noTripSpanPlan)
-    purchaseDiv.style.gap=
-        '10%'
+
+      const spanTotal = document.createElement('span')
+      spanTotal.textContent = 'Total'
+      Object.assign(spanTotal.style, {
+        color:'whitesmoke',
+        textSshadow: '1px 1px 2px black',  
+      });
+      divTotal.prepend(spanTotal)
+
+      const purchaseButton = document.createElement('button')
+      purchaseButton.id = 'buttonPurchase'
+      purchaseButton.textContent = 'Purchasse'
+      Object.assign(purchaseButton.style, {
+        width: "100px",
+        height:"40px",
+        boxShadow: "2px 2px 2px 1px rgba(0, 0, 0, 0.94)",  
+      });
     
+      divTotal.appendChild(purchaseButton)  
+      return divTotal
+}
 
-    document.getElementById('total').remove()
-    document.getElementById('trips').remove()
+function createDefaultTextDiv(){
+  const defaultTextDiv =  document.createElement('div')
+  defaultTextDiv.id = 'default-text'
+
+  const span1 = document.createElement('span')
+  span1.textContent='No Ticket in your cart'
+  const span2 = document.createElement('span')
+  span2.textContent = 'Why not plan a trip ?'
+
+  defaultTextDiv.appendChild(span1)
+  defaultTextDiv.appendChild(span2)
+
+  return defaultTextDiv
 }
 
 addBasketTrip()
