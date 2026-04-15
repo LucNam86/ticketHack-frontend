@@ -112,7 +112,7 @@ async function addBasketTrip() {
                 method: 'DELETE'
             }) 
 
-            window.location('book.html')
+            window.location('booking.html')
        })
     }
 }
