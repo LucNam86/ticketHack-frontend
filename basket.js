@@ -105,14 +105,14 @@ async function addBasketTrip() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ tickets: tripsId})
+                body: JSON.stringify({ trips: tripsId})
             }) 
 
             await fetch('http://localhost:3000/baskets/delete/trips', {
                 method: 'DELETE'
             }) 
 
-            window.location('booking.html')
+            window.location.href = './booking.html'
        })
     }
 }
