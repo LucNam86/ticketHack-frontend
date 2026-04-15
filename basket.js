@@ -37,6 +37,8 @@ function createTripDiv(trip, divParent) {
         })
 
         tripDiv.remove()
+        
+        !document.getElementsByClassName('trips').length && createTemplateNoTrip()
     }
 
     createDeleteButton(tripDiv, handleEvent)
@@ -61,7 +63,6 @@ function createDeleteButton(div, handleEvent) {
 }
 
 async function addBasketTrip() {
-    const idTripArray = []
     const response = await fetch('http://localhost:3000/baskets')
     const jsonResponse = await response.json()
 
@@ -73,11 +74,29 @@ async function addBasketTrip() {
     tripsDiv.style.height = '70%'
     tripsDiv.style.padding = '10px'
 
+    !jsonResponse.length && createTemplateNoTrip()
+
     for (const response of jsonResponse) {
         const trip = response.trip
         createTripDiv(trip, tripsDiv)
     }
-    return idTripArray
+}
+
+function createTemplateNoTrip(){
+    const noTripSpanCart = document.createElement('span')
+    noTripSpanCart.textContent = 'No Ticket in your cart'
+
+    const noTripSpanPlan = document.createElement('span')
+    noTripSpanPlan.textContent = 'Why not plan a trip'
+
+    purchaseDiv.appendChild(noTripSpanCart)
+    purchaseDiv.appendChild(noTripSpanPlan)
+    purchaseDiv.style.gap=
+        '10%'
+    
+
+    document.getElementById('total').remove()
+    document.getElementById('trips').remove()
 }
 
 addBasketTrip()
