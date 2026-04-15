@@ -23,9 +23,9 @@ function createTripDiv(trip, divParent) {
     tripDiv.style.boxShadow = '1px 1px 1px 1px rgb(0 0 0 / 20%)'
 
     const spanTravelContent = `${trip.departure} > ${trip.arrival}`
-    createSpan('travel', tripDiv, spanTravelContent)
-    createSpan('hour', tripDiv, trip.date)
-    createSpan('price', tripDiv, `${trip.price}€`)
+    createTripSpan('travel', tripDiv, spanTravelContent)
+    createTripSpan('hour', tripDiv, trip.date)
+    createTripSpan('price', tripDiv, `${trip.price}€`)
 
     async function handleEvent() {
         await fetch('http://localhost:3000/baskets/delete/trip', {
@@ -46,12 +46,12 @@ function createTripDiv(trip, divParent) {
         }
     }
 
-    createDeleteButton(tripDiv, handleEvent)
+    createTripDeleteButton(tripDiv, handleEvent)
 
     divParent.appendChild(tripDiv)
 }
 
-function createSpan(spanClass, div, content) {
+function createTripSpan(spanClass, div, content) {
     const span = document.createElement('span')
     span.classList.add(spanClass)
     span.style.width = '20%'
@@ -59,7 +59,7 @@ function createSpan(spanClass, div, content) {
     div.appendChild(span)
 }
 
-function createDeleteButton(div, handleEvent) {
+function createTripDeleteButton(div, handleEvent) {
     const deleteButton = document.createElement('button')
     deleteButton.classList.add('deleteSpanButton')
     deleteButton.textContent = 'X'
@@ -79,6 +79,7 @@ async function addBasketTrip() {
        defaultDiv.remove()
 
         const tripsDiv = document.createElement('trips')
+        tripsDiv.id= 'trips'
         tripsDiv.style.display = 'flex'
         tripsDiv.style.flexDirection = 'column'
         tripsDiv.style.justifyContent = 'center'
@@ -115,12 +116,6 @@ async function addBasketTrip() {
             window.location.href = './booking.html'
        })
     }
-}
-
-function createDivTrips(){
-    const divTrips = document.createElement('div')
-    divTrips.classList.add('trips')
-    return divTrips
 }
 
 function createDivTotal(){
