@@ -1,0 +1,36 @@
+.title {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.content-booking p {
+  color: #000000;
+  text-align: center;
+}
+
+
+.content-booking hr {
+  border: none;
+  height: 2px;
+  background-color: #5fae9e;
+  width: 60px;
+  margin: 20px auto;
+}
+
+#background-booking {
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f6fa;
+}
+.content-booking {
+  background: white;
+  padding: 30px;
+  text-align: center;
+  width: 500px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
