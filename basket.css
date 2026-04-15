@@ -39,13 +39,14 @@ button{
     border: none;
     background-color: rgb(92, 176, 133);
     color: whitesmoke;
+    border-radius: 5px;
 }
 
 #buttonPurchase{
 
     width: 100px;
     height:40px;
-    border-radius: 5px;
+
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.94);
 
 }
