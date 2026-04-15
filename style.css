@@ -162,3 +162,70 @@ hr {
   border-radius: 8px;
   cursor: pointer;
 }
+
+.trip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: white;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.trip-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.route {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.date {
+  font-size: 12px;
+  color: gray;
+}
+.nav a{
+    color: rgb(0, 0, 0);
+     text-decoration: none;
+}
+
+.nav a:hover {
+  color: #000000;
+}
+
+.trip-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 18px;
+  color: #00b894;
+}
+
+.btn-book {
+  padding: 8px 12px;
+  background-color: #00b894;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-book:hover {
+  background-color: #019874;
+}
+
+#results {
+  height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
